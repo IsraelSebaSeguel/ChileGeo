@@ -1,0 +1,44 @@
+@model ChileGeo.Web.ViewModels.ComunaEditViewModel
+@{
+    ViewData["Title"] = "Editar comuna";
+}
+
+<h1>Editar comuna</h1>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="EditarComuna" method="post">
+    <input type="hidden" asp-for="IdRegion" />
+    <input type="hidden" asp-for="IdComuna" />
+
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Superficie" class="form-label"></label>
+        <input asp-for="Superficie" class="form-control" />
+        <span asp-validation-for="Superficie" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Poblacion" class="form-label"></label>
+        <input asp-for="Poblacion" class="form-control" />
+        <span asp-validation-for="Poblacion" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Densidad" class="form-label"></label>
+        <input asp-for="Densidad" class="form-control" />
+        <span asp-validation-for="Densidad" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Detalle" asp-route-id="@Model.IdRegion" class="btn btn-link">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

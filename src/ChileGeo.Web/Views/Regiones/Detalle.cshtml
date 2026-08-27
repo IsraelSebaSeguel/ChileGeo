@@ -1,0 +1,43 @@
+@model IReadOnlyList<ChileGeo.Domain.Dtos.ComunaDto>
+@{
+    var region = (ChileGeo.Domain.Dtos.RegionDto)ViewBag.Region;
+    ViewData["Title"] = $"Comunas de {region.Nombre}";
+}
+
+<h1>Comunas de la región: @region.Nombre</h1>
+<p><a asp-action="Index">&larr; Volver al listado de regiones</a></p>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Esta región no tiene comunas registradas.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Superficie (km²)</th>
+                <th>Población</th>
+                <th>Densidad (hab/km²)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var comuna in Model)
+        {
+            <tr>
+                <td>@comuna.IdComuna</td>
+                <td>@comuna.Nombre</td>
+                <td>@comuna.InformacionAdicional?.Superficie</td>
+                <td>@comuna.InformacionAdicional?.Poblacion</td>
+                <td>@comuna.InformacionAdicional?.Densidad</td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" asp-action="EditarComuna" asp-route-idRegion="@region.IdRegion" asp-route-idComuna="@comuna.IdComuna">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

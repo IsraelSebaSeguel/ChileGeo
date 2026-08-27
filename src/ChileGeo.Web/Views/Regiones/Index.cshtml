@@ -1,0 +1,35 @@
+@model IReadOnlyList<ChileGeo.Domain.Dtos.RegionDto>
+@{
+    ViewData["Title"] = "Regiones";
+}
+
+<h1>Regiones de Chile</h1>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">No hay regiones registradas.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var region in Model)
+        {
+            <tr>
+                <td>@region.IdRegion</td>
+                <td>@region.Nombre</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Detalle" asp-route-id="@region.IdRegion">Ver comunas</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

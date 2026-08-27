@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ChileGeo.Api/ChileGeo.Api.csproj" />
+    <Project Path="src/ChileGeo.DataAccess/ChileGeo.DataAccess.csproj" />
+    <Project Path="src/ChileGeo.Domain/ChileGeo.Domain.csproj" />
+    <Project Path="src/ChileGeo.Web/ChileGeo.Web.csproj" />
+  </Folder>
+</Solution>
